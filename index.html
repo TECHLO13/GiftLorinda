@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadeau QR pour Marie</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #ffe0f0, #ffc0cb);
+      color: #880e4f;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    #qrcode img {
+      max-width: 100%;
+      height: auto;
+      border: 6px solid white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .qr-container {
+      background-color: #fff0f6;
+      padding: 20px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎀 Un cadeau pour Lorinda 🎀</h1>
+  <p>Scanne ce QR code pour découvrir ton message.</p>
+
+  <div id="qrcode" class="qr-container"></div>
+
+  <script>
+    const nom = "Lorinda";
+    const message = `Un doux message rien que pour toi, ${nom} 💖`;
+
+    QRCode.toDataURL(message, {
+      width: 256,
+      color: {
+        dark: "#880e4f",  // rose foncé
+        light: "#fff0f6"  // rose clair
+      }
+    }, function (err, url) {
+      if (err) return console.error(err);
+      const img = document.createElement("img");
+      img.src = url;
+      document.getElementById("qrcode").appendChild(img);
+    });
+  </script>
+</body>
+</html>
